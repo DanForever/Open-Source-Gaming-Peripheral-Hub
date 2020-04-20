@@ -2,8 +2,9 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <OutDir>$(SolutionDir)..\bin\$(Configuration).$(Platform)\</OutDir>
-    <IntDir>$(SolutionDir)..\temp\int\$(Configuration).$(Platform)\</IntDir>
+    <ProjectName Condition="'$(ProjectName)'==''">$(AssemblyName)</ProjectName>
+    <OutDir>$(SolutionDir)..\bin\$(ProjectName)\$(Configuration).$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)..\temp\int\$(ProjectName)\$(Configuration).$(Platform)\</IntDir>
   </PropertyGroup>
 
 </Project>
