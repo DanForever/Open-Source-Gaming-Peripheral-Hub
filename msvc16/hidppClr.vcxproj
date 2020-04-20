@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="ProjectConfiguration.Cpp.props" />
+  <Import Project="Globals.Cpp.props" />
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6F4FA6FA-C71B-486D-A67E-A45BAE91F1A1}</ProjectGuid>
+    <Keyword>ManagedCProj</Keyword>
+    <RootNamespace>HidppClr</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CLRSupport>true</CLRSupport>
+  </PropertyGroup>
+  <Import Project="Configuration.Cpp.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  <Import Project="BuildSettings.Cpp.props" />
+  <Import Project="Paths.Common.props" />
+  <ItemGroup>
+    <ClInclude Include="..\src\hidpp-clr\HidppClr.h" />
+    <ClInclude Include="..\src\hidpp-clr\Resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\hidpp-clr\AssemblyInfo.cpp" />
+    <ClCompile Include="..\src\hidpp-clr\HidppClr.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\src\hidpp-clr\app.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\src\hidpp-clr\app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
