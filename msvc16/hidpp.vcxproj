@@ -9,7 +9,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration">
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -47,7 +47,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\hidpp\Enumerator.cpp" />
+    <ClCompile Include="..\src\hidpp\ErrorCategories.cpp" />
     <ClCompile Include="..\src\hidpp\hidpp.cpp" />
+    <ClCompile Include="..\src\hidpp\Path.cpp" />
+    <ClCompile Include="..\src\hidpp\PathResolver.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\hidpp\Enumerator.h" />
+    <ClInclude Include="..\src\hidpp\ErrorCategories.h" />
+    <ClInclude Include="..\src\hidpp\os.h" />
+    <ClInclude Include="..\src\hidpp\Path.h" />
+    <ClInclude Include="..\src\hidpp\PathResolver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,5 +2,16 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="..\src\hidpp\hidpp.cpp" />
+    <ClCompile Include="..\src\hidpp\Path.cpp" />
+    <ClCompile Include="..\src\hidpp\PathResolver.cpp" />
+    <ClCompile Include="..\src\hidpp\ErrorCategories.cpp" />
+    <ClCompile Include="..\src\hidpp\Enumerator.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\hidpp\Path.h" />
+    <ClInclude Include="..\src\hidpp\ErrorCategories.h" />
+    <ClInclude Include="..\src\hidpp\PathResolver.h" />
+    <ClInclude Include="..\src\hidpp\os.h" />
+    <ClInclude Include="..\src\hidpp\Enumerator.h" />
   </ItemGroup>
 </Project>
