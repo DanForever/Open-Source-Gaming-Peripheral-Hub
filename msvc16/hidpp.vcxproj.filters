@@ -2,16 +2,42 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="..\src\hidpp\hidpp.cpp" />
-    <ClCompile Include="..\src\hidpp\Path.cpp" />
-    <ClCompile Include="..\src\hidpp\PathResolver.cpp" />
     <ClCompile Include="..\src\hidpp\ErrorCategories.cpp" />
-    <ClCompile Include="..\src\hidpp\Enumerator.cpp" />
+    <ClCompile Include="..\src\hidpp\Enumerator.cpp">
+      <Filter>Device</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hidpp\Path.cpp">
+      <Filter>Device</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hidpp\PathResolver.cpp">
+      <Filter>Device</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hidpp\HID\Device.cpp">
+      <Filter>HID</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\hidpp\Path.h" />
     <ClInclude Include="..\src\hidpp\ErrorCategories.h" />
-    <ClInclude Include="..\src\hidpp\PathResolver.h" />
     <ClInclude Include="..\src\hidpp\os.h" />
-    <ClInclude Include="..\src\hidpp\Enumerator.h" />
+    <ClInclude Include="..\src\hidpp\Enumerator.h">
+      <Filter>Device</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hidpp\PathResolver.h">
+      <Filter>Device</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hidpp\Path.h">
+      <Filter>Device</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hidpp\HID\Device.h">
+      <Filter>HID</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Device">
+      <UniqueIdentifier>{cd7b7b21-928b-4dfb-9fe5-1e3cad4b8b78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HID">
+      <UniqueIdentifier>{34b60a98-91a8-4a15-871d-cc40444cd180}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
