@@ -18,11 +18,13 @@
   <Import Project="BuildSettings.Cpp.props" />
   <Import Project="Paths.Common.props" />
   <ItemGroup>
+    <ClInclude Include="..\src\hidpp-clr\Enumerator.h" />
     <ClInclude Include="..\src\hidpp-clr\HidppClr.h" />
     <ClInclude Include="..\src\hidpp-clr\Resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hidpp-clr\AssemblyInfo.cpp" />
+    <ClCompile Include="..\src\hidpp-clr\Enumerator.cpp" />
     <ClCompile Include="..\src\hidpp-clr\HidppClr.cpp" />
   </ItemGroup>
   <ItemGroup>

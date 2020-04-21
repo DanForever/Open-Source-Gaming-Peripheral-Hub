@@ -15,14 +15,15 @@
 
 int main()
 {
-	std::vector<Device::Path> paths;
+	/*
+	std::vector<Native::Device::Path> paths;
 
 	int i = 0;
-	for ( auto& pathResolver : Device::Enumerator() )
+	for ( auto& pathResolver : Native::Device::Enumerator() )
 	{
 		std::wcout << L"Device Path " << i++ << L": " << pathResolver.GetId() << std::endl;
 
-		Device::Path path = pathResolver.GetPath();
+		Native::Device::Path path = pathResolver.GetPath();
 		auto iter = std::find( std::begin( paths ), std::end( paths ), path );
 
 		if ( iter != std::end( paths ) )
@@ -33,7 +34,7 @@ int main()
 
 	for(const auto& path : paths )
 	{
-		HID::Device device;
+		Native::HID::Device device;
 
 		std::wcout << path.GetId() << std::endl;
 
@@ -90,6 +91,6 @@ int main()
 		std::wcout << L"-- Version: " << device.GetVersion() << std::endl;
 		std::wcout << std::endl;
 	}
-
+	*/
 	return 0;
 }

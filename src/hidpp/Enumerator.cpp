@@ -4,7 +4,7 @@
 
 #include "ErrorCategories.h"
 
-namespace Device {
+namespace Native::Device {
 
 void Enumerator::RequestDeviceHandle()
 {
@@ -28,10 +28,28 @@ void Enumerator::EnumerateDevices()
 	int index = 0;
 	while ( SetupDiEnumDeviceInterfaces( m_DeviceInfoHandle, NULL, &m_hidGuid, index, &interfaceData ) )
 	{
-		PathResolver device( m_DeviceInfoHandle, &interfaceData );
-		m_devices.push_back( std::move( device ) );
+		PathResolver resolver( m_DeviceInfoHandle, &interfaceData );
+
+		if ( !AddToExistingCollection( resolver.GetId(), resolver.GetDevicePath() ) )
+			m_paths.push_back( { resolver.GetId(),{ resolver.GetDevicePath() } } );
+
 		++index;
 	}
+}
+
+bool Enumerator::AddToExistingCollection( const wchar_t* id, const wchar_t* path )
+{
+	for ( auto& collection : m_paths )
+	{
+		if ( collection.Id == id )
+		{
+			collection.Paths.push_back( path );
+
+			return true;
+		}
+	}
+
+	return false;
 }
 
 } // namespace Device {

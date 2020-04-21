@@ -5,9 +5,9 @@
 #include "../os.h"
 #include <hidsdi.h>
 
-namespace Device { class Path; }
+namespace Native::Device { class Path; }
 
-namespace HID
+namespace Native::HID
 {
 	class Device
 	{
@@ -15,7 +15,7 @@ namespace HID
 		Device();
 		~Device();
 
-		void Open( const ::Device::Path& path );
+		void Open( const Native::Device::Path& path );
 
 		void RetrieveProductInformation();
 

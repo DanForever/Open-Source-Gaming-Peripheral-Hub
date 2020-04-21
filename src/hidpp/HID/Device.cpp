@@ -5,7 +5,7 @@
 
 #include <system_error>
 
-namespace HID {
+namespace Native::HID {
 
 Device::Device() = default;
 
@@ -18,7 +18,7 @@ Device::~Device()
 	}
 }
 
-void Device::Open( const::Device::Path& path )
+void Device::Open( const Native::Device::Path& path )
 {
 	constexpr DWORD desiredAccess = GENERIC_READ | GENERIC_WRITE;
 	constexpr DWORD shareMode = FILE_SHARE_READ | FILE_SHARE_WRITE;

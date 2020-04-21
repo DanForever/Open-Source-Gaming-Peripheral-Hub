@@ -1,10 +1,10 @@
 #pragma once
 
+#include "../hidpp/HID/Device.h"
+
 using namespace System;
 
-namespace HidppClr {
-	public ref class Class1
-	{
-		// TODO: Add your methods for this class here.
-	};
+namespace Managed::HID
+{
+
 }

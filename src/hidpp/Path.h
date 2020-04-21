@@ -5,7 +5,7 @@
 #include "os.h"
 #include <setupapi.h>
 
-namespace Device
+namespace Native::Device
 {
 	class Path
 	{

@@ -24,6 +24,10 @@ namespace Hub
         public MainWindow()
         {
             InitializeComponent();
+
+            var enumerator = new Managed.HID.Enumerator();
+
+
         }
     }
 }

@@ -5,7 +5,7 @@
 #include <iostream>
 #include <cassert>
 
-namespace Device {
+namespace Native::Device {
 
 PathResolver::PathResolver( HDEVINFO deviceInfoHandle, SP_DEVICE_INTERFACE_DATA* interfaceData )
 {

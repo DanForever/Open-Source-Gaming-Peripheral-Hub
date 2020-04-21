@@ -7,7 +7,7 @@
 
 #include "Path.h"
 
-namespace Device
+namespace Native::Device
 {
 	class PathResolver
 	{
@@ -21,7 +21,7 @@ namespace Device
 		PathResolver& operator=( const PathResolver& ) = delete;
 		PathResolver& operator=( PathResolver&& ) = delete;
 
-		wchar_t* GetDevicePath() const { return m_interfaceDetailData->DevicePath; }
+		const wchar_t* GetDevicePath() const { return m_interfaceDetailData->DevicePath; }
 		const wchar_t* GetId() const { return m_id.c_str(); }
 
 		Path GetPath() const { return { m_id, m_interfaceDetailData }; }
