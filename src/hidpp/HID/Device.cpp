@@ -18,7 +18,7 @@ Device::~Device()
 	}
 }
 
-void Device::Open( const Native::Device::Path& path )
+void Device::Open( const wchar_t* path )
 {
 	constexpr DWORD desiredAccess = GENERIC_READ | GENERIC_WRITE;
 	constexpr DWORD shareMode = FILE_SHARE_READ | FILE_SHARE_WRITE;

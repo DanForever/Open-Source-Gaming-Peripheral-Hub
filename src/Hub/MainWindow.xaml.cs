@@ -27,7 +27,7 @@ namespace Hub
 
             var enumerator = new Managed.HID.Enumerator();
 
-
+            TestGrid.ItemsSource = enumerator.Collection;
         }
     }
 }

@@ -15,14 +15,12 @@ namespace Native::HID
 		Device();
 		~Device();
 
-		void Open( const Native::Device::Path& path );
+		void Open( const wchar_t* path );
 
 		void RetrieveProductInformation();
-
 		void RetrieveProductCapabilities();
 
 		int SendReport( const std::vector<uint8_t>& report );
-
 		int ReadReport( std::vector<uint8_t>& report, int timeout );
 
 		const wchar_t* GetManufacturer() const { return m_manufacturer; }
@@ -31,7 +29,6 @@ namespace Native::HID
 		unsigned short GetVendorId() const { return m_attributes.VendorID; }
 		unsigned short GetProductId() const { return m_attributes.ProductID; }
 		unsigned short GetVersion() const { return m_attributes.VersionNumber; }
-
 
 	private:
 		static const size_t BUFFER_SIZE = 1024;
