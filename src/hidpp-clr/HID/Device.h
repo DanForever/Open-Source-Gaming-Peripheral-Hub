@@ -14,10 +14,18 @@ namespace Managed::HID
 
 		bool Open( PathCollection^ paths );
 
+		property String^ Product { String^ get() { return GetProduct(); } }
 		property String^ Manufacturer { String^ get() { return GetManufacturer(); } }
+		property unsigned short ProductId { unsigned short get() { return GetProductId(); } }
+		property unsigned short VendorId { unsigned short get() { return GetVendorId(); } }
+		property unsigned short Version { unsigned short get() { return GetVersion(); } }
 
 	private:
+		String^ GetProduct();
 		String^ GetManufacturer();
+		unsigned short GetProductId();
+		unsigned short GetVendorId();
+		unsigned short GetVersion();
 
 		NativeDevice^ m_device;
 		PathCollection^ m_paths;

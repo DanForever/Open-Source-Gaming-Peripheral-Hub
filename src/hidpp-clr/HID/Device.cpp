@@ -42,10 +42,42 @@ bool Managed::HID::Device::Open( PathCollection^ paths )
 	return false;
 }
 
+String^ Managed::HID::Device::GetProduct()
+{
+	if ( !m_device )
+		return String::Empty;
+
+	return gcnew String( m_device->GetInstance()->GetProduct() );
+}
+
 String^ Managed::HID::Device::GetManufacturer()
 {
 	if ( !m_device )
 		return String::Empty;
 
 	return gcnew String( m_device->GetInstance()->GetManufacturer() );
+}
+
+unsigned short Managed::HID::Device::GetProductId()
+{
+	if ( !m_device )
+		return 0;
+
+	return m_device->GetInstance()->GetProductId();
+}
+
+unsigned short Managed::HID::Device::GetVendorId()
+{
+	if ( !m_device )
+		return 0;
+
+	return m_device->GetInstance()->GetVendorId();
+}
+
+unsigned short Managed::HID::Device::GetVersion()
+{
+	if ( !m_device )
+		return 0;
+
+	return m_device->GetInstance()->GetVersion();
 }

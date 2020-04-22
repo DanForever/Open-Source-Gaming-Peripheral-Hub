@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using Managed.HID;
 
 namespace Hub
 {
@@ -21,13 +22,25 @@ namespace Hub
     /// </summary>
     public partial class MainWindow
     {
+        private List<Managed.HID.Device> Devices = new List<Managed.HID.Device>();
+
         public MainWindow()
         {
             InitializeComponent();
 
             var enumerator = new Managed.HID.Enumerator();
 
-            TestGrid.ItemsSource = enumerator.Collection;
+            foreach(var pathCollection in enumerator.Collection )
+            {
+                var device = new Managed.HID.Device();
+
+                if(device.Open(pathCollection))
+                {
+                    Devices.Add( device );
+                }
+            }
+
+            TestGrid.ItemsSource = Devices;
         }
     }
 }
