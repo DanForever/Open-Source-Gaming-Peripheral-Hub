@@ -11,15 +11,13 @@ Device::Device() = default;
 
 Device::~Device()
 {
-	if ( m_handle )
-	{
-		CloseHandle( m_handle );
-		m_handle = {};
-	}
+	Close();
 }
 
 void Device::Open( const wchar_t* path )
 {
+	Close();
+
 	constexpr DWORD desiredAccess = GENERIC_READ | GENERIC_WRITE;
 	constexpr DWORD shareMode = FILE_SHARE_READ | FILE_SHARE_WRITE;
 	constexpr DWORD flags = FILE_FLAG_OVERLAPPED;
@@ -32,6 +30,15 @@ void Device::Open( const wchar_t* path )
 	m_event = CreateEvent( NULL, TRUE, TRUE, NULL );
 	if ( m_event == INVALID_HANDLE_VALUE )
 		throw std::system_error( GetLastError(), WinApiErrorCategory(), "CreateEvent" );
+}
+
+void Device::Close()
+{
+	if ( m_handle )
+	{
+		CloseHandle( m_handle );
+		m_handle = {};
+	}
 }
 
 void Device::RetrieveProductInformation()
@@ -74,13 +81,42 @@ void Device::RetrieveProductCapabilities()
 
 }
 
+bool Device::RetrieveHidppVersion()
+{
+	for ( uint8_t deviceIndex : {255, 0, 1, 2, 3, 4, 5, 6} )
+	{
+		std::vector<uint8_t> outbound = { 0x10,deviceIndex,0x00,0x1A,0x00,0x00,0x45 };
+
+		int sent = SendReport( outbound );
+
+		std::vector<uint8_t> inbound;
+		ReadReport( inbound, 2000 );
+
+		if ( inbound[ 2 ] == 0x8F )
+		{
+			m_hidppVersionMajor = 1;
+			m_hidppVersionMinor = 0;
+
+			return true;
+		}
+		else if ( inbound[ 2 ] == 0x00 && inbound[ 3 ] == 0x1A && inbound[ 4 ] == 0x02 )
+		{
+			m_hidppVersionMajor = inbound[ 4 ];
+			m_hidppVersionMinor = inbound[ 5 ];
+
+			return true;
+		}
+	}
+
+	return false;
+}
+
 int Device::SendReport( const std::vector<uint8_t>& report )
 {
 	DWORD err, written;
-	OVERLAPPED overlapped;
-	ZeroMemory( &overlapped, sizeof( OVERLAPPED ) );
+	OVERLAPPED overlapped = {};
 
-	if ( !WriteFile( m_handle, report.data(), report.size(), &written, &overlapped ) )
+	if ( !WriteFile( m_handle, report.data(), report.size(), nullptr, &overlapped ) )
 	{
 		err = GetLastError();
 		if ( err == ERROR_IO_PENDING )

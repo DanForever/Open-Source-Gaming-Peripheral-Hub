@@ -29,6 +29,7 @@
     <ClCompile>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>_HIDPP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -58,6 +59,7 @@
     <ClCompile Include="..\src\hidpp\PathResolver.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\hidpp\dll.h" />
     <ClInclude Include="..\src\hidpp\Enumerator.h" />
     <ClInclude Include="..\src\hidpp\ErrorCategories.h" />
     <ClInclude Include="..\src\hidpp\HID\Device.h" />

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "dll.h"
 #include "os.h"
 #include <SetupAPI.h>
 
@@ -9,13 +10,13 @@
 
 namespace Native::Device
 {
-	struct PathCollection
+	struct DLL_EXPORT PathCollection
 	{
 		std::wstring Id;
 		std::vector<std::wstring> Paths;
 	};
 
-	class Enumerator
+	class DLL_EXPORT Enumerator
 	{
 	public:
 		Enumerator()

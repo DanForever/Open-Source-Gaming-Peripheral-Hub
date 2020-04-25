@@ -31,6 +31,7 @@
     <ClInclude Include="..\src\hidpp\HID\Device.h">
       <Filter>HID</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\hidpp\dll.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Device">

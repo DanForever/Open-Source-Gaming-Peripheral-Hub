@@ -19,6 +19,7 @@ namespace Managed::HID
 		property unsigned short ProductId { unsigned short get() { return GetProductId(); } }
 		property unsigned short VendorId { unsigned short get() { return GetVendorId(); } }
 		property unsigned short Version { unsigned short get() { return GetVersion(); } }
+		property String^ Protocol { String^ get() { return GetProtocol(); } }
 
 	private:
 		String^ GetProduct();
@@ -26,6 +27,7 @@ namespace Managed::HID
 		unsigned short GetProductId();
 		unsigned short GetVendorId();
 		unsigned short GetVersion();
+		String^ GetProtocol();
 
 		NativeDevice^ m_device;
 		PathCollection^ m_paths;

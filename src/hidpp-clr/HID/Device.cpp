@@ -5,7 +5,6 @@ using namespace System::Runtime::InteropServices;
 
 Managed::HID::Device::Device()
 {
-
 }
 
 bool Managed::HID::Device::Open( PathCollection^ paths )
@@ -27,12 +26,24 @@ bool Managed::HID::Device::Open( PathCollection^ paths )
 			m_device->GetInstance()->Open( rawPath );
 			m_device->GetInstance()->RetrieveProductInformation();
 			m_device->GetInstance()->RetrieveProductCapabilities();
-
-			return true;
 		}
 		catch( std::system_error error )
 		{
 			//std::wcout << L"Failed to open device: " << error.what() << std::endl;
+			continue;
+		}
+
+		//todo: seperate hidpp protocol discovery to a seperate class
+		try
+		{
+			if ( m_device->GetInstance()->RetrieveHidppVersion() )
+				return true;
+			else
+				continue;
+		}
+		catch ( std::system_error error )
+		{
+			//todo: more specific error handling
 			continue;
 		}
 	}
@@ -80,4 +91,15 @@ unsigned short Managed::HID::Device::GetVersion()
 		return 0;
 
 	return m_device->GetInstance()->GetVersion();
+}
+
+String^ Managed::HID::Device::GetProtocol()
+{
+	if ( !m_device )
+		return String::Empty;
+
+	if ( m_device->GetInstance()->GetHidppVersionMajor() == 0 )
+		return "HID";
+
+	return String::Format( "{0}.{1}", m_device->GetInstance()->GetHidppVersionMajor(), m_device->GetInstance()->GetHidppVersionMinor() );
 }

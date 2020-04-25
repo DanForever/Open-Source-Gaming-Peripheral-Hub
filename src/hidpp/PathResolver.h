@@ -1,5 +1,6 @@
 #pragma once
 
+#include "dll.h"
 #include "os.h"
 
 #include <setupapi.h>
@@ -9,7 +10,7 @@
 
 namespace Native::Device
 {
-	class PathResolver
+	class DLL_EXPORT PathResolver
 	{
 	public:
 		PathResolver( HDEVINFO deviceInfoHandle, SP_DEVICE_INTERFACE_DATA* interfaceData );
