@@ -28,7 +28,7 @@ namespace Native::Device
 		auto begin() const { return m_paths.begin(); }
 		auto end() const { return m_paths.end(); }
 
-		int Size() const { return m_paths.size(); }
+		size_t Size() const { return m_paths.size(); }
 
 		PathCollection* CloneCollection( int index ) const { return new PathCollection( m_paths[ index ] ); }
 

@@ -15,6 +15,9 @@
     <ClCompile Include="..\src\hidpp\HID\Device.cpp">
       <Filter>HID</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\hidpp\HIDPP\hidppDevice.cpp">
+      <Filter>HID++</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\hidpp\ErrorCategories.h" />
@@ -32,6 +35,9 @@
       <Filter>HID</Filter>
     </ClInclude>
     <ClInclude Include="..\src\hidpp\dll.h" />
+    <ClInclude Include="..\src\hidpp\HIDPP\hidppDevice.h">
+      <Filter>HID++</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Device">
@@ -39,6 +45,9 @@
     </Filter>
     <Filter Include="HID">
       <UniqueIdentifier>{34b60a98-91a8-4a15-871d-cc40444cd180}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HID++">
+      <UniqueIdentifier>{70f160fe-a513-44a8-97fd-b184f0e22538}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -8,28 +8,44 @@
     <Filter Include="HID">
       <UniqueIdentifier>{9a33b4d5-d731-48b2-b702-6f48bb031f75}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Device">
-      <UniqueIdentifier>{5fc27164-03b4-4eb6-9bae-3b10b6653a8b}</UniqueIdentifier>
+    <Filter Include="HID++">
+      <UniqueIdentifier>{f39bba29-1e91-4bff-a514-3adf523ffdf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{01dfbad8-b359-411f-b561-18d98228a763}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\hidpp-clr\HidppClr.h" />
     <ClInclude Include="..\src\hidpp-clr\Resource.h" />
     <ClInclude Include="..\src\hidpp-clr\HID\Device.h">
       <Filter>HID</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\hidpp-clr\HIDPP\hidppDevice.h">
+      <Filter>HID++</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hidpp-clr\HIDPP\hidppEnumerator.h">
+      <Filter>HID++</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hidpp-clr\Utilities\ManagedObject.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\hidpp-clr\Enumerator.h">
-      <Filter>Device</Filter>
+      <Filter>HID</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hidpp-clr\AssemblyInfo.cpp" />
-    <ClCompile Include="..\src\hidpp-clr\HidppClr.cpp" />
     <ClCompile Include="..\src\hidpp-clr\HID\Device.cpp">
       <Filter>HID</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\hidpp-clr\HIDPP\hidppEnumerator.cpp">
+      <Filter>HID++</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hidpp-clr\HIDPP\hidppDevice.cpp">
+      <Filter>HID++</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\hidpp-clr\Enumerator.cpp">
-      <Filter>Device</Filter>
+      <Filter>HID</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

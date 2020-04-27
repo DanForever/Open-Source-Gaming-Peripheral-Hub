@@ -2,9 +2,9 @@
 
 inline Managed::HID::Enumerator::Enumerator()
 {
-	CLI::ManagedObject<Native::Device::Enumerator> enumerator = new Native::Device::Enumerator;
+	Utilities::ManagedObject<Native::Device::Enumerator> enumerator = new Native::Device::Enumerator;
 
-	int size = enumerator.GetInstance()->Size();
+	int size = static_cast<int>(enumerator.GetInstance()->Size());
 
 	m_collection = gcnew List<PathCollection^>;
 	m_collection->Capacity = size;
@@ -21,3 +21,13 @@ Managed::HID::PathCollection::PathCollection( NativePathCollection^ collection )
 	: m_collection( collection )
 {
 }
+
+String^ Managed::HID::PathCollection::Id::get()
+{
+	return gcnew String( m_collection->GetInstance()->Id.c_str() );
+}
+
+int Managed::HID::PathCollection::PathCount::get()
+{
+	return static_cast<int>( m_collection->GetInstance()->Paths.size() );
+ }

@@ -19,6 +19,7 @@
   <PropertyGroup>
     <OutputPath>$(OutDir)</OutputPath>
     <BaseIntermediateOutputPath>$(IntDir)</BaseIntermediateOutputPath>
+    <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Platform)' == 'x64' ">
     <PlatformTarget>x64</PlatformTarget>

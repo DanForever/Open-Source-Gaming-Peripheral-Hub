@@ -79,10 +79,10 @@ int main()
 					//		throw std::system_error( err, WinApiErrorCategory(), "WriteFile" );
 					//}
 
-					device.SendReport( outbound );
+					//device.SendReport( outbound );
 
-					std::vector<uint8_t> inbound;
-					device.ReadReport( inbound, 2000 );
+					//std::vector<uint8_t> inbound;
+					//device.ReadReport( inbound, 2000 );
 				}
 
 				std::wcout << L"Pie" << std::endl;

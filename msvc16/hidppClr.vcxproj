@@ -19,14 +19,17 @@
   <Import Project="Paths.Common.props" />
   <ItemGroup>
     <ClInclude Include="..\src\hidpp-clr\Enumerator.h" />
-    <ClInclude Include="..\src\hidpp-clr\HidppClr.h" />
+    <ClInclude Include="..\src\hidpp-clr\HIDPP\hidppDevice.h" />
+    <ClInclude Include="..\src\hidpp-clr\HIDPP\hidppEnumerator.h" />
     <ClInclude Include="..\src\hidpp-clr\HID\Device.h" />
     <ClInclude Include="..\src\hidpp-clr\Resource.h" />
+    <ClInclude Include="..\src\hidpp-clr\Utilities\ManagedObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hidpp-clr\AssemblyInfo.cpp" />
     <ClCompile Include="..\src\hidpp-clr\Enumerator.cpp" />
-    <ClCompile Include="..\src\hidpp-clr\HidppClr.cpp" />
+    <ClCompile Include="..\src\hidpp-clr\HIDPP\hidppDevice.cpp" />
+    <ClCompile Include="..\src\hidpp-clr\HIDPP\hidppEnumerator.cpp" />
     <ClCompile Include="..\src\hidpp-clr\HID\Device.cpp" />
   </ItemGroup>
   <ItemGroup>

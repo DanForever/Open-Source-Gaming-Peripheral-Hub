@@ -1,6 +1,8 @@
 #include "Device.h"
 #include <system_error>
 
+#include "../../hidpp/HID/Device.h"
+
 using namespace System::Runtime::InteropServices;
 
 Managed::HID::Device::Device()
@@ -12,7 +14,7 @@ bool Managed::HID::Device::Open( PathCollection^ paths )
 	m_paths = paths;
 
 	auto* rawNativeDevice = new Native::HID::Device();
-	m_device = gcnew NativeDevice( rawNativeDevice );
+	m_device = gcnew HID::NativeDevice( rawNativeDevice );
 
 	int size = m_paths->PathCount;
 	for ( m_validPathIndex = 0; m_validPathIndex < size; ++m_validPathIndex )
@@ -32,25 +34,32 @@ bool Managed::HID::Device::Open( PathCollection^ paths )
 			//std::wcout << L"Failed to open device: " << error.what() << std::endl;
 			continue;
 		}
-
-		//todo: seperate hidpp protocol discovery to a seperate class
-		try
-		{
-			if ( m_device->GetInstance()->RetrieveHidppVersion() )
-				return true;
-			else
-				continue;
-		}
-		catch ( std::system_error error )
-		{
-			//todo: more specific error handling
-			continue;
-		}
 	}
 
 	m_device = nullptr;
 	m_paths = nullptr;
 	return false;
+}
+
+bool Managed::HID::Device::Open( String^ path )
+{
+	auto* rawNativeDevice = new Native::HID::Device();
+	m_device = gcnew HID::NativeDevice( rawNativeDevice );
+
+	const wchar_t* rawPath = (const wchar_t*)( Marshal::StringToHGlobalUni( path ) ).ToPointer();
+
+	try
+	{
+		m_device->GetInstance()->Open( rawPath );
+		m_device->GetInstance()->RetrieveProductInformation();
+		m_device->GetInstance()->RetrieveProductCapabilities();
+	}
+	catch ( std::system_error error )
+	{
+		return false;
+	}
+
+	return true;
 }
 
 String^ Managed::HID::Device::GetProduct()

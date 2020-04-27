@@ -81,6 +81,7 @@ void Device::RetrieveProductCapabilities()
 
 }
 
+/*
 bool Device::RetrieveHidppVersion()
 {
 	for ( uint8_t deviceIndex : {255, 0, 1, 2, 3, 4, 5, 6} )
@@ -110,7 +111,6 @@ bool Device::RetrieveHidppVersion()
 
 	return false;
 }
-
 int Device::SendReport( const std::vector<uint8_t>& report )
 {
 	DWORD err, written;
@@ -155,6 +155,6 @@ int Device::ReadReport( std::vector<uint8_t>& report, int timeout )
 	}
 
 	return 0;
-}
+}*/
 
 } // namespace HID {

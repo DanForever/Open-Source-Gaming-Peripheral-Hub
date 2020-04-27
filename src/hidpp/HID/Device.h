@@ -21,10 +21,10 @@ namespace Native::HID
 
 		void RetrieveProductInformation();
 		void RetrieveProductCapabilities();
-		bool RetrieveHidppVersion();
+		//bool RetrieveHidppVersion();
 
-		int SendReport( const std::vector<uint8_t>& report );
-		int ReadReport( std::vector<uint8_t>& report, int timeout );
+		//int SendReport( const std::vector<uint8_t>& report );
+		//int ReadReport( std::vector<uint8_t>& report, int timeout );
 
 		const wchar_t* GetManufacturer() const { return m_manufacturer; }
 		const wchar_t* GetProduct() const { return m_product; }
@@ -36,8 +36,9 @@ namespace Native::HID
 		uint8_t GetHidppVersionMajor() const { return m_hidppVersionMajor; }
 		uint8_t GetHidppVersionMinor() const { return m_hidppVersionMinor; }
 
+		HANDLE GetHandle() { return m_handle; }
+
 	private:
-	public:
 		static const size_t BUFFER_SIZE = 1024;
 
 		HANDLE m_handle = {};
