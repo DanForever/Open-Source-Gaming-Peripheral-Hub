@@ -1,0 +1,20 @@
+g700s profile 5x16 bytes
+
+ID = device index
+SQ = sequence number (starts at 0, increments for each report)
+
+11 ID 92 SQ ...
+11 ID 92 SQ ...
+
+byte 10 = X Axis DPI
+byte 11 = Y Axis DPI
+0x04 = 200 (increments of 50)
+0xa4 = 8200
+
+byte 33 = Polling / Report rate
+0x01 = 1000
+0x02 = 500
+0x03 = 333
+0x04 = 250
+0x05 = 200
+0x08 = 125
