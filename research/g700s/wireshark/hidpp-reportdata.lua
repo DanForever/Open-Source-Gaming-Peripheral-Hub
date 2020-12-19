@@ -11,8 +11,19 @@ local function menuable_tap()
 	end
 	
 	local function write_header()
-		tw:append("Header        Body\n")
-		tw:append("00 01 02 03   00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15\n\n")
+		tw:append("          Header        Body\n")
+		tw:append("##   <>   00 01 02 03   00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15\n\n")
+	end
+	
+	local function write_info(pinfo)
+		local packet_number = string.format("%02d", pinfo.number)
+		tw:append(packet_number .. "   ")
+		
+		if(tostring(pinfo.dst)=="host") then
+			tw:append("->   ")
+		else
+			tw:append("<-   ")
+		end
 	end
 	
 	local function write_data(report)
@@ -32,29 +43,29 @@ local function menuable_tap()
 
 	-- this function will be called once for each packet
 	function tap.packet(pinfo,tvb)
-		if (tostring(pinfo.dst) == "4.1.0") then
-			local data = tvb:bytes()
-			local length = data:len()
-			local hex = data:tohex(true, " ")
-			local longpacket = false;
-			
-			if(length >= 20) then
-				local offset = length - 20
-				local value = data:get_index(offset)
-				if(value==0x11) then
-					longpacket = true;
-					local hidpp_report = data:subset(offset, 20)
-					write_data(hidpp_report)
-				end
+		local data = tvb:bytes()
+		local length = data:len()
+		local hex = data:tohex(true, " ")
+		local longpacket = false;
+		
+		if(length >= 20) then
+			local offset = length - 20
+			local value = data:get_index(offset)
+			if(value==0x11) then
+				longpacket = true;
+				local hidpp_report = data:subset(offset, 20)
+				write_info(pinfo)
+				write_data(hidpp_report)
 			end
-			
-			if(longpacket == false and length >= 7) then
-				local offset = length - 7
-				local value = data:get_index(offset)
-				if(value==0x10) then
-					local hidpp_report = data:subset(offset, 7)
-					write_data(hidpp_report)
-				end
+		end
+		
+		if(longpacket == false and length >= 7) then
+			local offset = length - 7
+			local value = data:get_index(offset)
+			if(value==0x10) then
+				local hidpp_report = data:subset(offset, 7)
+				write_info(pinfo)
+				write_data(hidpp_report)
 			end
 		end
 	end
